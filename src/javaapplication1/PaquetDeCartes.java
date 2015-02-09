@@ -16,8 +16,8 @@ public class PaquetDeCartes {
      * Initialise le processus aleatoire.  Un meme germe generera les memes cartes
      * @param germe pour initialiser le processus aleatoire
      */
-    public static void initialiserJeuDeCarte ( int germe ) {
-        generateur = new Random ( germe );
+    public static void initialiserJeuDeCarte ( ) {
+        generateur = new Random ( (int)(Math.random()*1000) );
     } // initialiserJeuDeCarte
 
     /**

@@ -1,4 +1,4 @@
-/**
+ /**
  * I N F 1 1 2 0
  *
  * Ce programme permet de miser sur des paris aux cartes.
@@ -11,27 +11,27 @@ public class Tp2 {
      * Affiche la carte selon sa couleur et sa valeur
      * @param carte doit etre entre 0 et 51 inclusivement
      */
-    public static void afficherCarte (int carte) {
-        // DŽclaration des variables locales
+    public static int afficherCarte (int carte) {
+        // Dï¿½claration des variables locales
         int valeur = PaquetDeCartes.valeur(carte);
-        int couleur = PaquetDeCartes.couleur(carte);
+        int couleur = PaquetDeCartes.couleur(carte); 
         
         // Affichage de la valeur de la carte
         switch (valeur) {
             case 1:
-                System.out.print ("as");
+                System.out.print ("as"); 
                 break;
             case 11:
-                System.out.print ("valet");
+                System.out.print ("valet"); 
                 break;
             case 12:
-                System.out.print ("dame");
+                System.out.print ("dame"); 
                 break;
             case 13:
-                System.out.print ("roi");
+                System.out.print ("roi"); 
                 break;
             default:
-                System.out.print (valeur);
+                System.out.print (valeur); 
                 break;
         } // switch (valeur)
         
@@ -50,19 +50,21 @@ public class Tp2 {
                 System.out.println (" pique");  
                 break;
         } // switch (couleur)
+        
+        return valeur;
     } // afficherCarte
     
     /**
-     * DŽtermine si les deux cartes ont la mme valeur (ex.: deux rois, deux 9)
-     * @param carte1 et carte2 doivent tre entre 0 et 51 inclusivement
+     * Dï¿½termine si les deux cartes ont la mï¿½me valeur (ex.: deux rois, deux 9)
+     * @param carte1 et carte2 doivent ï¿½tre entre 0 et 51 inclusivement
      */
     public static boolean memeValeur (int carte1,int carte2) {
-        // DŽclaration des variables locales
+        // Dï¿½claration des variables locales
         boolean memeValeur;
         int valeur1 = PaquetDeCartes.valeur(carte1);
         int valeur2 = PaquetDeCartes.valeur(carte2);
         
-        // VŽrification des valeurs des cartes
+        // Vï¿½rification des valeurs des cartes
         if (valeur1 == valeur2) {
             memeValeur = true;
         } else {
@@ -72,18 +74,18 @@ public class Tp2 {
     } // memeValeur
     
     /**
-     * DŽtermine si les deux cartes ont la mme couleur.
-     * Les 4 couleurs possibles sont : coeur, carreau, trfle et pique.
-     * @param carte1 et carte2 doivent tre entre 0 et 51 inclusivement
-     * @return true si les deux cartes ont la mme couleur, false sinon
+     * Dï¿½termine si les deux cartes ont la mï¿½me couleur.
+     * Les 4 couleurs possibles sont : coeur, carreau, trï¿½fle et pique.
+     * @param carte1 et carte2 doivent ï¿½tre entre 0 et 51 inclusivement
+     * @return true si les deux cartes ont la mï¿½me couleur, false sinon
      */
     public static boolean memeCouleur (int carte1,int carte2) {
-        // DŽclaration des variables locales
+        // Dï¿½claration des variables locales
         boolean memeCouleur;
         int couleur1 = PaquetDeCartes.couleur(carte1);
         int couleur2 = PaquetDeCartes.couleur(carte2);
         
-        // VŽrification des couleurs des cartes
+        // Vï¿½rification des couleurs des cartes
         if (couleur1 == couleur2) {
             memeCouleur = true;
         } else {
@@ -93,16 +95,16 @@ public class Tp2 {
     } // memeCouleur
     
     /**
-     * DŽtermine si une carte est une figure : As, roi, dame, valet.
-     * @param carte doit tre entre 0 et 51 inclusivement
+     * Dï¿½termine si une carte est une figure : As, roi, dame, valet.
+     * @param carte doit ï¿½tre entre 0 et 51 inclusivement
      * @return true si la carte est une figure, false sinon
      */
     public static boolean estUneFigure (int carte) {
-        // DŽclaration des variables locales
+        // Dï¿½claration des variables locales
         boolean estUneFigure;
         int valeur = (carte % 13);
         
-        // VŽrification de la valeur des cartes
+        // Vï¿½rification de la valeur des cartes
         if (valeur == 0) {
             estUneFigure = true;
         } else if (valeur > 9 && valeur < 13) {
@@ -115,13 +117,14 @@ public class Tp2 {
     
      /**
      * Permet a l'utilisateur d'initialiser le jeu de carte.
-     * Un mme entier germe gŽnŽrera les mmes cartes.
+     * Un mï¿½me entier germe gï¿½nï¿½rera les mï¿½mes cartes.
      */
     public static void initialiserLeJeu () {
-        int germe;
-        System.out.println ( "Entrez un nombre entier pour initialiser le jeu : " );
-        germe = Clavier.lireInt ();
-        PaquetDeCartes.initialiserJeuDeCarte ( germe );
+        //AmÃ©lioration: On enlÃ¨ve la lecture du germe alÃ©atoire
+        //System.out.println ( "Entrez un nombre entier pour initialiser le jeu : " );
+        //germe = Clavier.lireInt ();
+        
+        PaquetDeCartes.initialiserJeuDeCarte ( );
         PaquetDeCartes.brasser();
     } // initialiserLeJeu
     
@@ -131,7 +134,7 @@ public class Tp2 {
      * @return un entier dont la valeur correspond au montant (en $).
      */
     public static int entreeArgent () {
-        // DŽclaration de la variable locale
+        // Dï¿½claration de la variable locale
         int argent;
         
         // Message d'invite
@@ -145,11 +148,11 @@ public class Tp2 {
     } // entreeArgent
 
      /**
-     * Demande ˆ l'utilisateur s'il dŽsire jouer une partie.
+     * Demande ï¿½ l'utilisateur s'il dï¿½sire jouer une partie.
      * @return true si l'utilisateur veut jouer, false sinon
      */
     public static boolean jouerPartie () {
-        // DŽclaration des variables locales
+        // Dï¿½claration des variables locales
         String invite = "Voulez-vous jouer une partie ? ";
         String reponse;
         boolean jouerUnePartie = false;
@@ -171,16 +174,16 @@ public class Tp2 {
     } // jouerPartie
     
      /**
-     * Demande ˆ l'utilisateur combien de cartes il dŽsire piger.
+     * Demande ï¿½ l'utilisateur combien de cartes il dï¿½sire piger.
      * Si il a moins de 6$, l'ordinateur pige 2 cartes pour lui.
-     * @param argent doit tre un entier
+     * @param argent doit ï¿½tre un entier
      * @return 2 ou 3 cartes
      */
-    public static int nombreDeCartes (int argent) {
-        // DŽclaration de la variable locale
+    public static int nombreDeCartes (double argent) {
+        // Dï¿½claration de la variable locale
         int nombreDeCartes;
         
-        // DŽcision du nombre de cartes selon le montant d'argent
+        // Dï¿½cision du nombre de cartes selon le montant d'argent
         if (argent < 6) {
             System.out.println ("Je vais piger deux cartes.");
             nombreDeCartes = 2;
@@ -198,12 +201,12 @@ public class Tp2 {
     } // nombreDeCartes
     
      /**
-     * Affiche les diffŽrents choix de paris et demande a l'utilisateur
-     * sur lequel il dŽsire miser.
-     * @return 1, 2, 3, 4 ou 5, dŽpendamment de ce que l'utilisateur a choisi.
+     * Affiche les diffï¿½rents choix de paris et demande a l'utilisateur
+     * sur lequel il dï¿½sire miser.
+     * @return 1, 2, 3, 4 ou 5, dï¿½pendamment de ce que l'utilisateur a choisi.
      */
     public static int numeroDePari () {
-        // DŽclaration de la variable locale
+        // Dï¿½claration de la variable locale
         int numeroDePari;
         
         // Affichage des choix de paris
@@ -213,29 +216,30 @@ public class Tp2 {
         System.out.println (" 3 : somme paire");
         System.out.println (" 4 : meme couleur");
         System.out.println (" 5 : meme valeur");
+        System.out.println (" 6 : Toutes les cartes de la pige sont des figures."); //Nouveau mode
         
-        // DŽcision de l'utilisateur
+        // Dï¿½cision de l'utilisateur
         System.out.println ("Votre choix =>");
         numeroDePari = Clavier.lireInt();
         
         // Boucle de validation
-        while (numeroDePari < 1 || numeroDePari > 5) {
-            System.out.print ("*** vous devez choisir un numero entre 1 et 5 :");
+        while (numeroDePari < 1 || numeroDePari > 6) {
+            System.out.print ("*** vous devez choisir un numero entre 1 et 6 :");
             numeroDePari = Clavier.lireInt();
         }
         return numeroDePari;
     } // numeroDePari
     
      /**
-     * VŽrifie si, selon le numŽro de pari et les cartes pigŽes,
+     * Vï¿½rifie si, selon le numï¿½ro de pari et les cartes pigï¿½es,
      * l'utilisateur gagne son pari.
      * @param choixPari doit etre un numero entre 1 et 5
      * @param carte1 et carte2 doivent etre entre 0 et 51
-     * @param carte3 doit tre entre Žgal ˆ 51 ou moins
+     * @param carte3 doit ï¿½tre entre ï¿½gal ï¿½ 51 ou moins
      * @return true si l'utilisateur gagne son pari, false sinon
      */
     public static boolean gagnePari (int choixPari, int carte1, int carte2, int carte3) {
-        // DŽclaration des variables locales
+        // Dï¿½claration des variables locales
         boolean pariCarte1 = false;
         boolean pariCarte2 = false;
         boolean pariCarte3 = false;
@@ -245,31 +249,31 @@ public class Tp2 {
         int valeurCarte2 = PaquetDeCartes.valeur(carte2);
         int valeurCarte3 = 0;
         
-        // VŽrifie si l'utilisateur a pigŽ 3 cartes
+        // Vï¿½rifie si l'utilisateur a pigï¿½ 3 cartes
         if (carte3 > -1) {
             troisCartes = true;
             valeurCarte3 = PaquetDeCartes.valeur(carte3);
         }
         
-        // VŽrification selon le numŽro de pari
+        // Vï¿½rification selon le numï¿½ro de pari
         switch (choixPari) {
             case 1: // Pari 1
             
-                // VŽrifie si les cartes sont des figures
+                // Vï¿½rifie si les cartes sont des figures
                 pariCarte1 = estUneFigure(carte1);
                 pariCarte2 = estUneFigure(carte2);
                 if (troisCartes) { // L'utilisateur a trois cartes
                     pariCarte3 = estUneFigure(carte3);
                 }
                 
-                // VŽrifie si au moins une carte respecte la condition
+                // Vï¿½rifie si au moins une carte respecte la condition
                 if (pariCarte1 == true || pariCarte2 == true || pariCarte3 == true) {
                     gagnePari = true;
                 }
                 break;
             case 2: // Pari 2
                 
-                // Vérifie si chaque carte est inférieure à 5
+                // Vï¿½rifie si chaque carte est infï¿½rieure ï¿½ 5
                 if (valeurCarte1 < 5) {
                     pariCarte1 = true;
                 }
@@ -282,14 +286,14 @@ public class Tp2 {
                     }
                 }
                 
-                // Vérification de la condition
+                // Vï¿½rification de la condition
                 if (troisCartes) { // L'utilisateur a trois cartes
-                    // Vérifie si les trois cartes respectent la condition
+                    // Vï¿½rifie si les trois cartes respectent la condition
                     if (pariCarte1 == true && pariCarte2 == true && pariCarte3 == true) {
                         gagnePari = true;
                     } 
                 } else { // L'utilisateur a deux cartes
-                    // VŽrifie si les deux cartes pigŽes respectent la condition
+                    // Vï¿½rifie si les deux cartes pigï¿½es respectent la condition
                     if (pariCarte1 == true && pariCarte2 == true) {
                         gagnePari = true;
                     }
@@ -297,12 +301,12 @@ public class Tp2 {
                 break;
             case 3: // Pari 3
                 if (troisCartes) { // L'utilisateur a trois cartes
-                    // VŽrification de l'addition des valeurs
+                    // Vï¿½rification de l'addition des valeurs
                     if ((valeurCarte1 + valeurCarte2 + valeurCarte3) % 2 == 0) {
                         gagnePari = true;
                     }
                 } else { // L'utilisateur a deux cartes
-                    // VŽrification de l'addition des valeurs
+                    // Vï¿½rification de l'addition des valeurs
                     if ((valeurCarte1 + valeurCarte2) % 2 == 0) {
                         gagnePari = true;
                     }
@@ -310,12 +314,12 @@ public class Tp2 {
                 break;
             case 4: // Pari 4
                 if (troisCartes) { // L'utilisateur a trois cartes
-                    // VŽrification des conditions
+                    // Vï¿½rification des conditions
                     if (memeCouleur(carte1,carte2) && memeCouleur(carte1,carte2)) {
                         gagnePari = true;
                     }
                 } else { // L'utilisateur a deux cartes
-                    // Vérification de la condition
+                    // Vï¿½rification de la condition
                     if (memeCouleur(carte1,carte2)) {
                         gagnePari = true;
                     }
@@ -323,13 +327,26 @@ public class Tp2 {
                 break;
             case 5: // Pari 5
                 if (troisCartes) { // L'utilisateur a trois cartes
-                    // Vérification des conditions
+                    // Vï¿½rification des conditions
                     if (memeValeur(carte1,carte2) && memeValeur(carte1,carte2)) {
                         gagnePari = true;
                     }
                 } else { // L'utilisateur a deux cartes
-                    // VŽrification de la condition
+                    // Vï¿½rification de la condition
                     if (memeValeur(carte1,carte2)) {
+                        gagnePari = true;
+                    }
+                }
+                break;
+           case 6: // Pari 6 **nouveau**
+                if (troisCartes) { // L'utilisateur a trois cartes
+                    // Vï¿½rification des conditions
+                    if (estUneFigure(carte1) && estUneFigure(carte2) && estUneFigure(carte3) ) {
+                        gagnePari = true;
+                    }
+                } else { // L'utilisateur a deux cartes
+                    // Vï¿½rification de la condition
+                    if (estUneFigure(carte1) && estUneFigure(carte2)) {
                         gagnePari = true;
                     }
                 }
@@ -339,16 +356,16 @@ public class Tp2 {
     } // gagnePari
     
      /**
-     * Donne le montant d'argent gagnŽ par l'utilisateur selon son pari.
-     * @param nombreDeCartes doit tre 2 ou 3
-     * @param numeroDePari doit tre entre 1 et 5
-     * @return gain le montant gagnŽ par l'utilisateur
+     * Donne le montant d'argent gagnï¿½ par l'utilisateur selon son pari.
+     * @param nombreDeCartes doit ï¿½tre 2 ou 3
+     * @param numeroDePari doit ï¿½tre entre 1 et 5
+     * @return gain le montant gagnï¿½ par l'utilisateur
      */
     public static int argentGagne (int nombreDeCartes, int numeroDePari) {
-        // DŽclaration de la variable locale
+        // Dï¿½claration de la variable locale
         int gain = 0;
         
-        // DŽcision du gain en argent selon le numŽro du pari
+        // Dï¿½cision du gain en argent selon le numï¿½ro du pari
         switch (numeroDePari) {
             case 1: // Pari 1
                 gain = 17 - (2 * nombreDeCartes);
@@ -365,6 +382,9 @@ public class Tp2 {
             case 5: // Pari 5
                 gain = (2 * (int)(Math.pow(nombreDeCartes - 1,3))) + 2;
                 break;
+             case 6: // Pari 6 **nouveau**
+                gain = 5 * nombreDeCartes;
+                break;
         } // switch (numeroDePari)
         return gain;
     } // argentGagne
@@ -372,8 +392,8 @@ public class Tp2 {
     
             
     public static void main (String[] params) {
-        // DŽclaration des variables
-        int argent = 0;
+        // Dï¿½claration des variables
+        double argent = 0;
         int nombreDeCartes = 0;
         boolean jouerPartie;
         int carte1 = 0;
@@ -381,37 +401,41 @@ public class Tp2 {
         int carte3 = 0;
         int numeroDePari = 0;
         boolean gagnePari;
+        int sommeCartes=0;
         String gagne = "Bravo ! Vous avez gagne ";
         String perdu = "Desole ! Vous avez perdu !";
 
         initialiserLeJeu(); // Initialisation de l'ordre des cartes
         
-        // Saisie des variables nŽcessaires ˆ l'exŽcution du jeu
-        argent = entreeArgent(); // EntrŽe du montant d'argent de l'utilisateur
+        // Saisie des variables nï¿½cessaires ï¿½ l'exï¿½cution du jeu
+        argent = entreeArgent(); // Entrï¿½e du montant d'argent de l'utilisateur
         jouerPartie = jouerPartie(); // Est-ce l'utilisateur veut jouer?
         
         // Boucle principale
-        while (jouerPartie == true && argent >= 4) {
-            // Saisie des variables nŽcessaires pour un pari
+        while (jouerPartie == true && argent >= 5) {
+            // Saisie des variables nï¿½cessaires pour un pari
             carte3 = -1; // Puisqu'on ne sait pas le nombre de cartes
-            nombreDeCartes = nombreDeCartes(argent); // Nombre de cartes jouŽes
-            argent = argent - (2 * nombreDeCartes); // Achat des cartes ˆ 2$ par carte
+            nombreDeCartes = nombreDeCartes(argent); // Nombre de cartes jouï¿½es
+            argent = argent - (2.5 * nombreDeCartes); // Achat des cartes ï¿½ 2$ par carte
             numeroDePari = numeroDePari(); // Pari en jeu
             
             // Affectation et affichage des cartes
             carte1 = PaquetDeCartes.piger();
             carte2 = PaquetDeCartes.piger();
             System.out.println ("Voici les cartes pigees:");
-            afficherCarte(carte1);
-            afficherCarte(carte2);
+             
+            carte1 = afficherCarte(carte1); 
+            carte2 = afficherCarte(carte2);
             if (nombreDeCartes == 3) {
-                carte3 = PaquetDeCartes.piger();                 
-                afficherCarte(carte3);
+                carte3 = PaquetDeCartes.piger();    
+                carte3 = afficherCarte(carte3);
+            }else{
+                carte3=0;
             }
             
-            // VŽrification si l'utilisateur gagne et ajout du gain
+            // Vï¿½rification si l'utilisateur gagne et ajout du gain
             gagnePari = gagnePari(numeroDePari,carte1,carte2,carte3);
-            if (gagnePari) { // L'utilisateur a gagnŽ son pari
+            if (gagnePari) { // L'utilisateur a gagnï¿½ son pari
                 argent = argent + argentGagne(nombreDeCartes,numeroDePari);
                 System.out.print (gagne);
                 System.out.print (argentGagne(nombreDeCartes,numeroDePari));
@@ -420,10 +444,17 @@ public class Tp2 {
                 System.out.println (perdu);
             }
             
+            //la somme **nouveau**
+            if (nombreDeCartes == 2) {
+              System.out.println ("Voici les cartes: " + carte1 + " + " +  carte2 + " = " + (carte1+carte2) );
+            }else{
+                  System.out.println ("Voici les cartes: " + carte1 + " + " +  carte2 + " + " + carte3 + " = " + (carte1+carte2+carte3) );
+            }
+            
             // Fin du pari
             System.out.println ("Vous disposez maintenant de " + argent + " $");
             
-            // VŽrification si l'utilisateur peut/veut continuer ˆ jouer
+            // Vï¿½rification si l'utilisateur peut/veut continuer ï¿½ jouer
             if (argent < 4) {
                 System.out.println ("Vous n'avez plus assez d'argent, vous ne pouvez continuer.");
             } else {
